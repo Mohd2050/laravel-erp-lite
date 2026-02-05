@@ -118,15 +118,15 @@ npm run dev
 php artisan serve
 ```
 
-
-📌 Notes
+---
+## 📌 Notes
 
 UI is intentionally minimal
 Focus is on backend structure and code quality
 Designed for local development and technical review
 Suitable as a foundation for larger ERP-style systems
-
-📄 License
+---
+## 📄 License
 
 This project is provided for educational and technical evaluation purposes.
 
