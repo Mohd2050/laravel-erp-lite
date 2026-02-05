@@ -29,8 +29,41 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 space-y-3">
+                    @if (session('success'))
+                        <div class="flash-message bg-green-50 border border-green-300 text-green-800 p-4 rounded">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="flash-message bg-red-50 border border-red-300 text-red-800 p-4 rounded">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    @if (session('warning'))
+                        <div class="flash-message bg-yellow-50 border border-yellow-300 text-yellow-800 p-4 rounded">
+                            {{ session('warning') }}
+                        </div>
+                    @endif
+
+                    @if (session('info'))
+                        <div class="flash-message bg-blue-50 border border-blue-300 text-blue-800 p-4 rounded">
+                            {{ session('info') }}
+                        </div>
+                    @endif
+                </div>
+
+                @yield('content')
             </main>
         </div>
     </body>
 </html>
+<script>
+    setTimeout(() => {
+        document.querySelectorAll('.flash-message')
+            .forEach(el => el.remove());
+    }, 3000);
+</script>

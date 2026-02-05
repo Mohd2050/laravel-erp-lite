@@ -2,26 +2,29 @@
 
 namespace App\Modules\Product\Services;
 
-use App\Modules\Product\Repositories\ProductRepositoryInterface;
+use App\Modules\Product\Models\Product;
 
 class ProductService
 {
-    public function __construct(
-        protected ProductRepositoryInterface $repository
-    ) {}
-
     public function listProducts()
     {
-        return $this->repository->all();
+        return Product::latest()->get();
     }
 
-    public function createProduct(array $data)
+    public function create(array $data): Product
     {
-        //   لاحقًا:
-        // - حساب ضريبة
-        // - تحقق business rules
-        // - logging
+        return Product::create($data);
+    }
 
-        return $this->repository->create($data);
+    public function update(Product $product, array $data): Product
+    {
+        $product->update($data);
+
+        return $product;
+    }
+
+    public function delete(Product $product): void
+    {
+        $product->delete();
     }
 }
